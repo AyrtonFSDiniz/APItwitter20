@@ -1,17 +1,16 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { CreateTweetDto } from './dto/create-tweet.dto';
 import { UpdateTweetDto } from './dto/update-tweet.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { Tweet } from '.prisma/client';
+import { Tweet, Prisma } from '.prisma/client';
 
 @Injectable()
 export class TweetService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createTweetDto: CreateTweetDto): Promise<Tweet> {
+  async create(createTweetDto: Prisma.TweetCreateInput): Promise<Tweet> {
     return await this.prisma.tweet.create({
-      data: {...createTweetDto},
+      data: { ...createTweetDto },
     });
   }
 
@@ -21,20 +20,20 @@ export class TweetService {
 
   async findOne(id: number): Promise<Tweet> {
     return await this.prisma.tweet.findUnique({
-      where: {id}
+      where: { id },
     });
   }
 
   async update(id: number, updateTweetDto: UpdateTweetDto) {
     return await this.prisma.tweet.update({
-      data: {...updateTweetDto},
-      where: {id},
+      data: { ...updateTweetDto },
+      where: { id },
     });
   }
 
   async remove(id: number) {
     return await this.prisma.tweet.delete({
-      where: {id},
+      where: { id },
     });
   }
 }
