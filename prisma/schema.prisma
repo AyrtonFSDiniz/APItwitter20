@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id Int @default(autoincrement()) @id
+  nome String
+  imagem String?
+  bio String?
+  nascimento DateTime
+  seguidores Seguidores @relation(fields: [seguidoresId], references: [id])
+  seguidoresId Int
+  seguindo Seguindo @relation(fields: [seguindoId], references: [id])
+  seguindoId Int
+  tweets Tweet @relation(fields: [tweetsId], references: [id])
+  tweetsId Int
+  email String
+  senha String
+  favoritosOnUsuario FavoritosOnUsuario[]
+}
+
+model Seguidores {
+  id Int @default(autoincrement()) @id
+  idSeguidores Int
+  usuarios Usuario[]
+}
+
+model Seguindo {
+  id Int @default(autoincrement()) @id
+  idSeguindo Int
+  usuarios Usuario[]
+}
+
+model Tweet {
+  id Int @default(autoincrement()) @id
+  texto String
+  emoji String?
+  data_postagem DateTime @default(now())
+  curtidas Int
+  usuarios Usuario[]
+  usuarioId Int
+  categoria CategoriaOnTweet[]
+  favoritosOnUsuario FavoritosOnUsuario[]
+}
+
+model Categoria {
+  id Int @default(autoincrement()) @id
+  nome String
+  criado_em DateTime @default(now())
+  tweet CategoriaOnTweet[]
+}
+
+model CategoriaOnTweet {
+  categoria Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId Int
+  tweets Tweet @relation(fields: [tweetId], references: [id])
+  tweetId Int
+  @@id([categoriaId, tweetId])
+}
+
+model FavoritosOnUsuario {
+  tweets Tweet @relation(fields: [tweetId], references: [id])
+  tweetId Int
+  usuarios Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
+  @@id([tweetId, usuarioId])
+}
