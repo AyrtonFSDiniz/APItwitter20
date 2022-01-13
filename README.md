@@ -11,7 +11,7 @@ de rede social. Esse é a evolução do projeto 2 do módulo 4.
 - Swagger com endpoints mais organizados;
 - JWT acrescentado autenticador com tempo determinado para expirar;
 - Tabelas com relação Many-to-Many;
-- Deploy no Heroku (no link: https://projetotwitter2.herokuapp.com/)
+- Deploy no Heroku.
 
 ## Instalando Dependências
 
