@@ -20,7 +20,7 @@ export class CreateUsuarioDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsDate()
-  nascimento: Date;
+  nascimento: string;
 
   @ApiProperty()
   @IsNotEmpty()
