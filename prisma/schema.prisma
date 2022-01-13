@@ -18,7 +18,7 @@ model Usuario {
   tweets Tweet[]
   email String
   senha String
-  favoritosOnUsuario FavoritosOnUsuario[]
+  favoritosOnUsuario FavoritosUsuario[]
 }
 
 model Seguidores {
@@ -44,7 +44,7 @@ model Tweet {
   usuarios Usuario @relation(fields: [usuarioid], references: [id]) 
   usuarioid      Int
   categoria CategoriaOnTweet[]
-  favoritosOnUsuario FavoritosOnUsuario[]
+  favoritosUsuario FavoritosUsuario[]
 }
 
 model Categoria {
@@ -62,7 +62,7 @@ model CategoriaOnTweet {
   @@id([categoriaId, tweetId])
 }
 
-model FavoritosOnUsuario {
+model FavoritosUsuario {
   tweets Tweet @relation(fields: [tweetId], references: [id])
   tweetId Int
   usuarios Usuario @relation(fields: [usuarioId], references: [id])

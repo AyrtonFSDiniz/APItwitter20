@@ -8,31 +8,35 @@ import { Prisma } from '.prisma/client';
 export class FavoritosUsuarioService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createFavoritosUsuarioDto: Prisma.FavoritosOnUsuarioCreateInput) {
-    return await this.prisma.FavoritosOnUsuario.create({
-      data: {...createFavoritosUsuarioDto},
+  async create(createFavoritosUsuarioDto: Prisma.FavoritosUsuarioCreateInput) {
+    return await this.prisma.favoritosUsuario.create({
+      data: { ...createFavoritosUsuarioDto },
     });
   }
 
-  async findAll(): Promise<FavoritosOnUsuario> {
-    return await this.prisma.favoritosOnUsuario.findMany();  
+  async findAll(): Promise<FavoritosUsuario> {
+    return await this.prisma.favoritosUsuario.findMany();
   }
 
-  async findOne(id: number): Promise<FavoritosOnUsuario> {
-    return await this.prisma.favoritosOnUsuario.findUnique({
-      where: {id},
-    });  }
-
-  async update(id: number, updateFavoritosUsuarioDto: UpdateFavoritosUsuarioDto): Promise<FavoritosOnUsuario> {
-    return await this.prisma.favoritosOnUsuario.update({
-      data: {...updateFavoritosUsuarioDto},
-      where: {id},
+  async findOne(id: number): Promise<FavoritosUsuario> {
+    return await this.prisma.favoritosUsuario.findUnique({
+      where: { id },
     });
   }
 
-  async remove(id: number): Promise<FavoritosOnUsuario> {
-    return this.prisma.favoritosOnUsuario.delete({
-      where: {id},
+  async update(
+    id: number,
+    updateFavoritosUsuarioDto: UpdateFavoritosUsuarioDto,
+  ): Promise<FavoritosUsuario> {
+    return await this.prisma.favoritosUsuario.update({
+      data: { ...updateFavoritosUsuarioDto },
+      where: { id },
+    });
+  }
+
+  async remove(id: number): Promise<FavoritosUsuario> {
+    return this.prisma.favoritosusuario.delete({
+      where: { id },
     });
   }
 }
