@@ -14,6 +14,7 @@ import { CreateTweetDto } from './dto/create-tweet.dto';
 import { UpdateTweetDto } from './dto/update-tweet.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { Prisma } from '@prisma/client';
 
 @ApiTags('tweet')
 @Controller('tweet')
@@ -22,7 +23,7 @@ export class TweetController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'))
-  async create(@Body() createTweetDto: CreateTweetDto) {
+  async create(@Body() createTweetDto: Prisma.TweetCreateInput) {
     return this.tweetService.create(createTweetDto);
   }
 

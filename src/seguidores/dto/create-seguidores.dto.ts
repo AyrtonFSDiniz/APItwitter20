@@ -7,4 +7,9 @@ export class CreateSeguidoresDto {
     @IsNotEmpty()
     @IsInt()
     idSeguidores: number;
+
+    @ApiProperty()
+    @IsNotEmpty()
+    @IsInt()
+    usuarioid: number;
 }

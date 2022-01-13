@@ -7,4 +7,9 @@ export class CreateSeguindoDto {
     @IsNotEmpty()
     @IsInt()
     idSeguindo: number;
+
+    @ApiProperty()
+    @IsNotEmpty()
+    @IsInt()
+    usuarioid: number;
 }

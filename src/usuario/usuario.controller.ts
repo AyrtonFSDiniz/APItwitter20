@@ -5,6 +5,7 @@ import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { Prisma } from '@prisma/client';
 
 @ApiTags('usuario')
 @Controller('usuario')
@@ -13,7 +14,7 @@ export class UsuarioController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'))
-  create(@Body() createUsuarioDto: CreateUsuarioDto) {
+  create(@Body() createUsuarioDto: Prisma.UsuarioCreateInput) {
     return this.usuarioService.create(createUsuarioDto);
   }
 

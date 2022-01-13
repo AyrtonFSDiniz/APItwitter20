@@ -15,5 +15,10 @@ export class CreateTweetDto {
     @ApiProperty()
     @IsNotEmpty()
     @IsInt()
-    curtidas: number; 
+    curtidas: number;
+
+    @ApiProperty()
+    @IsNotEmpty()
+    @IsInt()
+    usuarioid: number;
 }
