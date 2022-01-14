@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateSeguidoresDto } from './dto/create-seguidores.dto';
 import { UpdateSeguidoresDto } from './dto/update-seguidores.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { Seguidores } from '@prisma/client';
+import { Seguidores, Prisma } from '@prisma/client';
 
 @Injectable()
 export class SeguidoresService {
