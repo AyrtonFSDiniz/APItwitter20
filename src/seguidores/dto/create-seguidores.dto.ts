@@ -1,15 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { IsInt, IsNotEmpty } from "class-validator";
-import {ApiProperty} from '@nestjs/swagger';
+import { IsInt, IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSeguidoresDto {
-    @ApiProperty()
-    @IsNotEmpty()
-    @IsInt()
-    idSeguidores: number;
-
-    @ApiProperty()
-    @IsNotEmpty()
-    @IsInt()
-    usuarioid: number;
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsInt()
+  usuarioid: number;
+  
+  @ApiProperty()
+  @IsNotEmpty()
+  nome: string;
 }

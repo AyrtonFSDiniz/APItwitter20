@@ -23,8 +23,8 @@ model Usuario {
 
 model Seguidores {
   id Int @default(autoincrement()) @id
-  idSeguidores Int
-  usuarios Usuario @relation(fields: [usuarioid], references: [id]) 
+  nome String
+  usuario Usuario @relation(fields: [usuarioid], references: [id]) 
   usuarioid      Int
 }
 
